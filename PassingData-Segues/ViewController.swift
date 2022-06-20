@@ -9,11 +9,17 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    @IBOutlet weak var myLabel: UILabel!
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard case let vc as SecondViewController = segue.destination else { return }
+        
+        // 1st -> 2nd
+        vc.someText = myLabel.text
     }
-
-
+    
+    @IBAction func unwindToFirstVC(_ unwindSegue: UIStoryboardSegue) {
+        // empty
+    }
 }
 
